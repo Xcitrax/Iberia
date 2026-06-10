@@ -1,0 +1,564 @@
+/* =========================================================
+   REDEM ROLEPLAY — DONATE PAGE
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #c9962a;
+  --gold-light: #d4a843;
+  --gold-dim: #8a6420;
+  --cream: #e8d9b0;
+  --dark-bg: #0e0a05;
+  --panel-bg: #1a1208;
+  --card-bg: #14100a;
+  --border: #4a3510;
+  --border-gold: #6b4f1a;
+  --text-main: #d6c89a;
+  --text-dim: #9a876a;
+  --red-accent: #8b1a1a;
+  --red-btn: #a02020;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image:
+    linear-gradient(180deg, rgba(8, 4, 2, 0.45) 0%, rgba(8, 4, 2, 0.45) 100%),
+    url("background-img.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── NAVBAR ─────────────────────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  background: rgba(8, 5, 2, 0.96);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-redem {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: 3px;
+}
+.logo-rp {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 10px;
+  color: var(--red-accent);
+  letter-spacing: 4px;
+  margin-top: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  font-family: "Cinzel", serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--cream);
+}
+.nav-links a.active {
+  border-bottom: 2px solid var(--gold);
+}
+
+.btn-discord {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red-btn);
+  color: #fff;
+  text-decoration: none;
+  font-family: "Cinzel", serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 9px 18px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.btn-discord:hover {
+  background: #c02828;
+}
+.discord-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  padding: 60px 20px 50px;
+}
+
+.hero-title {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 58px);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.8),
+    0 0 60px rgba(180, 90, 10, 0.4);
+  margin-bottom: 12px;
+}
+
+.hero-sub {
+  font-family: "Cinzel", serif;
+  font-size: clamp(11px, 1.5vw, 14px);
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.btn-choose {
+  display: inline-block;
+  background: var(--red-btn);
+  color: #fff;
+  text-decoration: none;
+  font-family: "Cinzel", serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+.btn-choose:hover {
+  background: #c02828;
+  transform: translateY(-1px);
+}
+
+/* ── PACKAGES ────────────────────────────────────────────── */
+.packages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 60px;
+  background: transparent;
+}
+
+.cards-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  width: 100%;
+  justify-content: center;
+  padding: 10px 4px;
+}
+
+.card {
+  flex: 0 0 230px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(180, 130, 20, 0.18);
+}
+.card.featured {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(200, 150, 40, 0.2);
+}
+
+/* ── CARD IMAGES — real photos ── */
+.card-img {
+  width: 100%;
+  height: 230px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, var(--card-bg) 100%);
+}
+
+.gunsmit-img {
+  background-image: url("gunsmit.png");
+  background-position: center center;
+}
+
+.wagon-img {
+  background-image: url("wagon.png");
+  background-position: center top;
+}
+
+.horse-img {
+  background-image: url("horse.png");
+  background-position: center top;
+}
+
+.airbalon-img {
+  background-image: url("balon.png");
+  background-position: center top;
+}
+
+.animals-img {
+  background: linear-gradient(160deg, #141e0e 0%, #0e160a 60%, #080e05 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.animals-img::before {
+  content: "🦌";
+  font-size: 56px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  z-index: 1;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+}
+
+/* ── CARD BODY ── */
+.card-body {
+  padding: 14px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-top: 1px solid var(--border);
+}
+
+.card-title {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  text-align: center;
+  flex: 1;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.card-price {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--gold-light);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.btn-buy {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  color: var(--cream);
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.btn-buy:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: #fff;
+}
+
+.carousel-btn {
+  display: none;
+}
+
+/* ── BOTTOM ROW ──────────────────────────────────────────── */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  gap: 30px;
+  background: var(--panel-bg);
+  border-top: 1px solid var(--border);
+  min-height: 240px;
+  padding: 40px;
+  align-items: start;
+}
+
+.donators-box,
+.payments-box {
+  background: rgba(10, 8, 4, 0.6);
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  padding: 22px 20px;
+}
+
+.box-title {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.donators-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.donators-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+.star {
+  color: var(--gold);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.donor-name {
+  flex: 1;
+  color: var(--text-main);
+}
+.donor-amt {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  color: var(--gold-light);
+  font-size: 13px;
+}
+
+.why-donate {
+  text-align: center;
+}
+
+.why-title {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.why-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.why-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(180, 120, 10, 0.1);
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.why-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.why-item h5 {
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.why-item p {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.payment-logos {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.secure-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 6px;
+}
+.lock-icon {
+  font-size: 20px;
+  margin-top: 2px;
+}
+.secure-note strong {
+  font-family: "Cinzel", serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cream);
+  display: block;
+  margin-bottom: 3px;
+}
+.secure-note p {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  background: rgba(4, 2, 0, 0.98);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 18px;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-family: "Cinzel", serif;
+  letter-spacing: 1px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .bottom-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .why-donate {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hero-content {
+    padding: 40px 20px 30px;
+  }
+  .hero {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .packages {
+    padding: 30px 20px;
+  }
+  .cards-wrapper {
+    gap: 12px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-dim) transparent;
+  }
+  .card {
+    flex: 0 0 200px;
+  }
+  .bottom-row {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+  .why-donate {
+    order: 0;
+  }
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
