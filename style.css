@@ -30,7 +30,7 @@ html {
 
 body {
   background-image:
-    linear-gradient(180deg, rgba(8, 4, 2, 0.45) 0%, rgba(8, 4, 2, 0.45) 100%),
+    linear-gradient(180deg, rgba(8,4,2,0.45) 0%, rgba(8,4,2,0.45) 100%),
     url("background-img.png");
   background-size: cover;
   background-position: center;
@@ -542,14 +542,12 @@ body {
   }
   .cards-wrapper {
     gap: 12px;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-bottom: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--gold-dim) transparent;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .card {
-    flex: 0 0 200px;
+    flex: 0 0 calc(50% - 6px);
+    max-width: 200px;
   }
   .bottom-row {
     grid-template-columns: 1fr;
