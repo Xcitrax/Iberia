@@ -1,7 +1,3 @@
-/* =========================================================
-   IBERIA 1895 — SHOP / DONATE JS
-   ========================================================= */
-
 const packages = [
   // WEAPONS
   {
@@ -263,7 +259,7 @@ const state = {
 const searchInput = document.getElementById("searchInput");
 const sortSelect = document.getElementById("sortSelect");
 const priceSelect = document.getElementById("priceSelect");
-const featuredToggle = document.getElementById("featuredToggle");
+
 const resetBtn = document.getElementById("resetFilters");
 const emptyResetBtn = document.getElementById("emptyReset");
 const cardsWrapper = document.getElementById("cardsWrapper");
@@ -271,7 +267,6 @@ const emptyState = document.getElementById("emptyState");
 const activeFilters = document.getElementById("activeFilters");
 const catBannerTitle = document.getElementById("catBannerTitle");
 const catBannerSub = document.getElementById("catBannerSub");
-const resultsCount = document.getElementById("resultsCount");
 
 // ── EVENTS ─────────────────────────────────────────────────
 searchInput.addEventListener("input", () => {
@@ -279,24 +274,18 @@ searchInput.addEventListener("input", () => {
   render();
 });
 
-sortSelect.addEventListener("change", () => {
-  state.sort = sortSelect.value;
-  render();
-});
+// sortSelect.addEventListener("change", () => {
+//   state.sort = sortSelect.value;
+//   render();
+// });
 
-priceSelect.addEventListener("change", () => {
-  state.maxPrice = parseFloat(priceSelect.value);
-  render();
-});
+// priceSelect.addEventListener("change", () => {
+//   state.maxPrice = parseFloat(priceSelect.value);
+//   render();
+// });
 
-featuredToggle.addEventListener("click", () => {
-  state.featured = !state.featured;
-  featuredToggle.classList.toggle("active", state.featured);
-  render();
-});
-
-resetBtn.addEventListener("click", resetAll);
-if (emptyResetBtn) emptyResetBtn.addEventListener("click", resetAll);
+// resetBtn.addEventListener("click", resetAll);
+// if (emptyResetBtn) emptyResetBtn.addEventListener("click", resetAll);
 
 document.getElementById("catNav").addEventListener("click", (e) => {
   const btn = e.target.closest(".cat-btn");
@@ -313,28 +302,29 @@ document.getElementById("catNav").addEventListener("click", (e) => {
 });
 
 // ── RESET ──────────────────────────────────────────────────
-function resetAll() {
-  state.cat = "all";
-  state.search = "";
-  state.sort = "default";
-  state.featured = false;
-  state.maxPrice = 999;
+// function resetAll() {
+//   state.cat = "all";
+//   state.search = "";
+//   state.sort = "default";
+//   state.featured = false;
+//   state.maxPrice = 999;
 
-  searchInput.value = "";
-  sortSelect.value = "default";
-  priceSelect.value = "999";
-  featuredToggle.classList.remove("active");
+//   searchInput.value = "";
 
-  document
-    .querySelectorAll(".cat-btn")
-    .forEach((b) => b.classList.remove("active"));
-  document.querySelector('[data-cat="all"]').classList.add("active");
+//   priceSelect.value = "999";
+//   feat
+// uredToggle.classList.remove("active");
 
-  catBannerTitle.textContent = catMeta.all.title;
-  catBannerSub.textContent = catMeta.all.sub;
+//   document
+//     .querySelectorAll(".cat-btn")
+//     .forEach((b) => b.classList.remove("active"));
+//   document.querySelector('[data-cat="all"]').classList.add("active");
 
-  render();
-}
+//   catBannerTitle.textContent = catMeta.all.title;
+//   catBannerSub.textContent = catMeta.all.sub;
+
+//   render();
+// }
 
 // ── FILTER & SORT ──────────────────────────────────────────
 function getFiltered() {
@@ -370,13 +360,7 @@ function renderChips() {
       render();
     });
   }
-  if (state.featured) {
-    addChip("⭐ Featured Only", () => {
-      state.featured = false;
-      featuredToggle.classList.remove("active");
-      render();
-    });
-  }
+
   if (state.maxPrice < 999) {
     addChip("Max $" + state.maxPrice, () => {
       state.maxPrice = 999;
@@ -427,13 +411,13 @@ function render() {
   if (filtered.length === 0) {
     cardsWrapper.innerHTML = "";
     emptyState.style.display = "flex";
-    resultsCount.textContent = "";
+
     return;
   }
 
   emptyState.style.display = "none";
-  resultsCount.textContent =
-    filtered.length + (filtered.length === 1 ? " Package" : " Packages");
+
+  filtered.length + (filtered.length === 1 ? " Package" : " Packages");
 
   cardsWrapper.innerHTML = "";
   filtered.forEach((pkg, i) => {
